@@ -32,6 +32,8 @@ const Container = styled.article`
 	width: 100%;
 	height: 60%;
 
+	margin-bottom: 0.8rem;
+
 	padding: 10px;
 
 	background-color: var(--color-white);

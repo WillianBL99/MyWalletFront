@@ -15,6 +15,7 @@ function Trasactions() {
         <BoxTransactions />
         <section>
             <SquareButton title='Nova entrada' ion_icon='add-circle-outline' />
+            <Space />
             <SquareButton title='Nova saída' ion_icon='remove-circle-outline' />
         </section>
     </ContainerExtended>
@@ -46,3 +47,8 @@ const ContainerExtended = styled(Container)`
         width: 100%;
     }
 `
+
+const Space = styled.div`
+    width: 1.6rem;
+`
+

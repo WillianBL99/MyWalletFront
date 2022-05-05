@@ -20,7 +20,6 @@ const Button = styled.button`
     height: 5rem;
 
     padding: 5px;
-
     border-radius: var(--radio-button);
 
     font-size: var(--font-size-button);
