@@ -5,6 +5,7 @@ const Input = styled.input`
     height: 3rem;
 
     padding-left: 15px;
+    margin-bottom: 0.6rem;
 
     border-radius: var(--radio-button);
 

@@ -1,5 +1,5 @@
-/* import { BrowserRouter, Routes, Route } from 'react';
-import { useState, useEffect } from 'react'; */
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+/*import { useState, useEffect } from 'react'; */
 import '../../styled/css/reset.css';
 import '../../styled/css/index.css'
 
@@ -15,7 +15,11 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider> */
-        <Login />
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Login />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 

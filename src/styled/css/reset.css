@@ -50,3 +50,7 @@ table {
 button, input {
     border: none;
 }
+
+a {
+	text-decoration: none;
+}
