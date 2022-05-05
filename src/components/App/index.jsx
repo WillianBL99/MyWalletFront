@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react'; */
 import '../../styled/css/reset.css';
 import '../../styled/css/index.css'
 
-import RetangularButton from "../Layout/RetangularButton";
-import Container from '../Layout/Container';
+import Login from '../Routes/Login';
 
 function App() {
 
@@ -16,9 +15,7 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider> */
-        <Container>
-            <RetangularButton title={'Cadastrar'} />
-        </Container>
+        <Login />
     );
 }
 
