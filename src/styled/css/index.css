@@ -11,4 +11,6 @@
     --font-size-button: 1.4rem;
 
     --radio-button: 5px;
+
+    box-sizing: border-box;
 }

@@ -4,6 +4,7 @@ import '../../styled/css/reset.css';
 import '../../styled/css/index.css'
 
 import RetangularButton from "../Layout/RetangularButton";
+import Container from '../Layout/Container';
 
 function App() {
 
@@ -15,7 +16,9 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider> */
-        <RetangularButton title={'Cadastrar'} />
+        <Container>
+            <RetangularButton title={'Cadastrar'} />
+        </Container>
     );
 }
 
