@@ -6,6 +6,8 @@ import '../../styled/css/index.css'
 import Login from '../Routes/Login';
 import Register from '../Routes/Register';
 import Trasactions from '../Routes/Transactions';
+import NewEntry from '../Routes/NewEntry';
+import NewExit from '../Routes/NewExit';
 
 function App() {
 
@@ -14,8 +16,10 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/transactions' element={<Trasactions />} />
+                <Route path='register' element={<Register />} />
+                <Route path='transactions' element={<Trasactions />} />
+                <Route path='transactions/newentry' element={<NewEntry />} />
+                <Route path='transactions/newexit' element={<NewExit />} />
             </Routes>
         </BrowserRouter>
     );

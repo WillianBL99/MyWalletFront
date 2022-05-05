@@ -19,7 +19,7 @@ function Login() {
           <Input type='password' placeholder="Senha" />
           <RetangularButton title={'Entrar'} />
         </Form>
-        <Link className="link" to={'/register'}>
+        <Link className="link" to={'register'}>
           Não tem uma conta? Cadastre-se!
         </Link>
     </ContainerExtended>
