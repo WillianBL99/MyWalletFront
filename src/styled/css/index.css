@@ -1,18 +1,24 @@
 * {
-    --font-logo: 'Saira Stencil One', cursive;
-    --font-main: 'Raleway', sans-serif;
+	--font-logo: 'Saira Stencil One', cursive;
+	--font-main: 'Raleway', sans-serif;
 
-    --color-button: #A328D6;
-    --color-main: #8C11BE;
-    --color-white: #fff;
+	--color-button: #A328D6;
+	--color-main: #8C11BE;
+	--color-white: #fff;
+	
+	--color-text-white: #fff;
+	--color-text-black: #000;
+	--color-text-gray: #C6C6C6;
 
-    --color-text-white: #fff;
-    --color-text-black: #000;
+	--font-size-button: 1.4rem;
+	--font-size-logo: 2.5rem;
+	--font-size-header: 1.6rem;
 
-    --font-size-button: 1.4rem;
-    --font-size-logo: 2.5rem;
+	--radio-button: 5px;
 
-    --radio-button: 5px;
+	box-sizing: border-box;
+}
 
-    box-sizing: border-box;
+.root {
+  font-family: var(--font-main);
 }

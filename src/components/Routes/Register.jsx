@@ -47,7 +47,6 @@ const Form = styled.form`
 
 const ContainerExtended = styled(Container)`
   a {
-    font-family: var(--font-main);
     font-weight: 700;
     color: var(--color-text-white)
   }
