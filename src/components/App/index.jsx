@@ -4,6 +4,7 @@ import '../../styled/css/reset.css';
 import '../../styled/css/index.css'
 
 import Login from '../Routes/Login';
+import Register from '../Routes/Register';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </BrowserRouter>
     );

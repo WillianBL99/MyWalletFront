@@ -40,7 +40,7 @@ const Logo = styled.h1`
 `
 
 const Form = styled.form`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `
 
 const ContainerExtended = styled(Container)`
