@@ -1,0 +1,14 @@
+* {
+    --font-logo: 'Saira Stencil One', cursive;
+    --font-main: font-family: 'Raleway', sans-serif;
+
+    --color-button: #A328D6;
+    --color-main: #8C11BE;
+
+    --color-text-white: #fff;
+    --color-text-black: #000;
+
+    --font-size-button: 1.4rem;
+
+    --radio-button: 5px;
+}
