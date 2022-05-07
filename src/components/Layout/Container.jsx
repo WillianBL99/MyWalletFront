@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-  /* background-color: ${(props) => props.theme.colors.altTertiary}; */
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

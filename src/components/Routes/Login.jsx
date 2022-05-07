@@ -1,14 +1,16 @@
 import {Link, useLocation, useNavigate} from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
 import Container from "../Layout/Container";
 import RetangularButton from "../Layout/RetangularButton";
 import Input from "../Layout/Input";
+import UserContext from '../../hooks/UserContext';
 
 function Login() {
   const [loginData, setLoginData] = useState({email:'', password: ''});
+	const {persistUser} = useContext(UserContext);
   const {state} = useLocation();
   const navigate = useNavigate();
   
@@ -16,25 +18,43 @@ function Login() {
     event.preventDefault();
 
     const promise = axios.post('http://localhost:5000/sign-in',loginData);
-    promise.then((res) => {
-      const {token} = res.data;
-      navigate('/transactions', {state: {token}});
-    });
-    promise.catch(error => {
-      console.log(error);
-      alert(error.response.data)
-    })
 
+    promise.then((res) => {
+      storeLogin(res.data);
+      navigate('/transactions');
+    });
+
+    promise.catch(error => {
+      alert(error.response.data)
+    });
   }
+
+  function storeLogin(res){
+    const {token, name, email} = res;
+    const userInfo = {
+      name,
+      email,
+      config: {headers: {Authorization: `Bearer ${token}`}}
+    }
+
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    persistUser(userInfo)
+  }
+
+  useEffect(() => {
+    if(state){
+      setLoginData({...state})
+    }
+  }, [state]);
 
   return (
     <ContainerExtended>
         <Logo>MyWallet</Logo>
         <Form onSubmit={handleLogin}>
-          <Input type="email" placeholder='E-mail'
+          <Input type="email" placeholder='E-mail' value={loginData.email}
             onChange={e => {setLoginData({...loginData, email: e.target.value})}} 
           />
-          <Input type='password' placeholder="Senha" 
+          <Input type='password' placeholder="Senha" value={loginData.password}
             onChange={e => {setLoginData({...loginData, password: e.target.value})}} 
           />
           <RetangularButton type='submit' title={'Entrar'} />

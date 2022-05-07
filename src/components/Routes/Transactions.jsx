@@ -1,20 +1,19 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import BoxTransactions from '../Layout/BoxTransactions';
 
 import Container from "../Layout/Container";
 import SquareButton from '../Layout/SquareButton';
+import UserContext from '../../hooks/UserContext';
 
 function Trasactions() {
 	const [transactions, setTransactions] = useState()
-	const {token} = useLocation().state;
-	const navigate = useNavigate();
+	const {user} = useContext(UserContext);
+	const token = undefined;
 
 	useEffect(() => {
-		const promise = axios.get('http://localhost:5000/get-transactions',
-		{headers: {Authorization: `Bearer ${token}`}})
+		const promise = axios.get('http://localhost:5000/get-transactions', user.config)
 
 		promise.then(res => {
 			console.log(res);
