@@ -2,12 +2,11 @@
 import styled from 'styled-components';
 
 function BoxTransactions({transactions}) {
-	console.log('boxtran', transactions)
 	function showTransactions(){
 		return (
 			<ul>
-				{transactions?.map( transactio => {
-					return <AssembleTrasaction transactio={transactio} />
+				{transactions?.map( (transactio, id) => {
+					return <AssembleTrasaction key={id} transactio={transactio} />
 				})}
 			</ul>
 		)
@@ -46,7 +45,7 @@ function AssembleTrasaction({transactio}) {
 						<small>{date}</small>
 						<strong>{description}</strong>
 				</span>
-				<strong>{price}</strong>
+				<strong>{price.toFixed(2)}</strong>
 		</li>
 	)
 }
