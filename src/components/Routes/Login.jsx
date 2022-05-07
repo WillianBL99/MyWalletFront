@@ -1,8 +1,4 @@
-/* import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert";
-import axios from "axios"; */
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Container from "../Layout/Container";
@@ -14,10 +10,12 @@ function Login() {
   return (
     <ContainerExtended>
         <Logo>MyWallet</Logo>
-        <Form>
-          <Input type="email" placeholder='E-mail' />
-          <Input type='password' placeholder="Senha" />
-          <RetangularButton title={'Entrar'} />
+        <Form >
+          <Input type="email" placeholder='E-mail' 
+          />
+          <Input type='password' placeholder="Senha" 
+          />
+          <RetangularButton type='submit' title={'Entrar'} />
         </Form>
         <Link className="link" to={'register'}>
           Não tem uma conta? Cadastre-se!

@@ -1,25 +1,58 @@
-/* import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert";
-import axios from "axios"; */
-import {Link} from 'react-router-dom'
+import axios from 'axios';
+import {Link, useNavigate} from 'react-router-dom'
 import styled from 'styled-components';
 
 import Container from "../Layout/Container";
 import RetangularButton from "../Layout/RetangularButton";
 import Input from "../Layout/Input";
+import { useState } from 'react';
 
 function Login() {
+  const [registerData, setRegisterData] = useState({name:'', email: '', password: ''});
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const navigate = useNavigate;
+
+  function register(event) {
+    event.preventDefault();
+
+    if(registerData.password !== passwordConfirm){
+      alert('Senhas diferentes')
+      return
+    }
+
+    const url = 'http://localhost:5000/sign-up';
+
+    const promise = axios.post(url, registerData)
+    
+    promise.then(() => {
+        const {email, password} = registerData;
+        navigate('/', {state: {email, password}});
+      })
+
+    promise.catch(error => {
+        console.log(error)
+        alert(error);
+      })
+  }
+
 
   return (
     <ContainerExtended>
         <Logo>MyWallet</Logo>
-        <Form>
-          <Input type="text" placeholder='E-mail' />
-          <Input type="email" placeholder='E-mail' />
-          <Input type='password' placeholder="Senha" />
-          <Input type='password' placeholder="Confirme a senha" />
-          <RetangularButton title={'Registrar'} />
+        <Form onSubmit={register}>
+          <Input type="text" placeholder='Name'
+            onChange={e => {setRegisterData({...registerData, name: e.target.value})}} 
+          />
+          <Input type="email" placeholder='E-mail'
+            onChange={e => {setRegisterData({...registerData, email: e.target.value})}}  
+          />
+          <Input type='password' placeholder="Senha" 
+            onChange={e => {setRegisterData({...registerData, password: e.target.value})}} 
+          />
+          <Input type='password' placeholder="Confirme a senha" 
+            onChange={e => {setPasswordConfirm(e.target.value)}} 
+          />
+          <RetangularButton type='submit' title={'Registrar'} />
         </Form>
         <Link className="link" to={'/'}>
           Já tem uma conta? Entre agora!
