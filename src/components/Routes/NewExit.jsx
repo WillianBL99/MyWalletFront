@@ -11,7 +11,7 @@ function NewExit() {
         <h1>Nova entrada</h1>
         <Input type='number' placeholder='Valor' />
         <Input type='text' placeholder='Descrição' />
-        <RetangularButton title='Salvar saída' />
+        <RetangularButton to='/transactions' title='Salvar saída' />
     </ContainerExtended>
   );
 }

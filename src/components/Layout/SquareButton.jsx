@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
-function SquareButton({title, ion_icon}){
+function SquareButton({title, ion_icon, to}){
+    const navigate = useNavigate();
+
     return (
-        <Button>
+        <Button onClick={() => navigate(to?to:'')}>
             <ion-icon name={ion_icon}></ion-icon>
             <p>{title}</p>
         </Button>

@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-function RetangularButton({title}){
+function RetangularButton({title, to}){
+    const navigate = useNavigate();
+
     return (
-        <Button>{title}</Button>
+        <Button onClick={() => navigate(to?to:'')} >{title}</Button>
     );
 }
 

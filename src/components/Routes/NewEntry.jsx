@@ -11,7 +11,7 @@ function NewEntry() {
         <h1>Nova entrada</h1>
         <Input type='number' placeholder='Valor' />
         <Input type='text' placeholder='Descrição' />
-        <RetangularButton title='Salvar entrada' />
+        <RetangularButton to='/transactions' title='Salvar entrada' />
     </ContainerExtended>
   );
 }

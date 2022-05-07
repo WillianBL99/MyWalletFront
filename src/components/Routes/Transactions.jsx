@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BoxTransactions from '../Layout/BoxTransactions';
 
@@ -10,6 +10,7 @@ import SquareButton from '../Layout/SquareButton';
 function Trasactions() {
 	const [transactions, setTransactions] = useState()
 	const {token} = useLocation().state;
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const promise = axios.get('http://localhost:5000/get-transactions',
@@ -31,9 +32,9 @@ function Trasactions() {
         </header>
         <BoxTransactions transactions={transactions} />
         <section>
-            <SquareButton title='Nova entrada' ion_icon='add-circle-outline' />
+            <SquareButton to='newentry' title='Nova entrada' ion_icon='add-circle-outline' />
             <Space />
-            <SquareButton title='Nova saída' ion_icon='remove-circle-outline' />
+            <SquareButton to='newexit' title='Nova saída' ion_icon='remove-circle-outline' />
         </section>
     </ContainerExtended>
   );
