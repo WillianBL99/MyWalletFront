@@ -1,28 +1,55 @@
 
 import styled from 'styled-components';
 
-function BoxTransactions() {
+function BoxTransactions({transactions}) {
+	console.log('boxtran', transactions)
+	function showTransactions(){
+		return (
+			<ul>
+				{transactions?.map( transactio => {
+					return <AssembleTrasaction transactio={transactio} />
+				})}
+			</ul>
+		)
+	}
+
+	function showBalance(){
+		let total = 0;
+		transactions?.forEach(trasaction => {
+			total += trasaction.price
+		})
+		return (
+			<section>
+					<strong>SALDO</strong>
+					<strong>{total.toFixed(2)}</strong>
+			</section>
+		)
+	}
 
   return (
     <Container>
-			<ul>
-					<li>
-							<span>
-									<small>30/11</small>
-									<strong>Amoço mãe</strong>
-							</span>
-							<strong>38.50</strong>
-					</li>
-			</ul>
-			<section>
-					<strong>SALDO</strong>
-					<strong>2345.39</strong>
-			</section>
+			{showTransactions()}
+			{showBalance()}
 		</Container>
   );
 }
 
 export default BoxTransactions;
+
+
+
+function AssembleTrasaction({transactio}) {
+	const {date, description, price} = transactio;
+	return (
+		<li>
+				<span>
+						<small>{date}</small>
+						<strong>{description}</strong>
+				</span>
+				<strong>{price}</strong>
+		</li>
+	)
+}
 
 const Container = styled.article`
 	display: flex;

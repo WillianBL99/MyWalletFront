@@ -10,7 +10,7 @@ import { useState } from 'react';
 function Login() {
   const [registerData, setRegisterData] = useState({name:'', email: '', password: ''});
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   function register(event) {
     event.preventDefault();
@@ -23,7 +23,7 @@ function Login() {
     const url = 'http://localhost:5000/sign-up';
 
     const promise = axios.post(url, registerData)
-    
+
     promise.then(() => {
         const {email, password} = registerData;
         navigate('/', {state: {email, password}});
@@ -31,7 +31,7 @@ function Login() {
 
     promise.catch(error => {
         console.log(error)
-        alert(error);
+        alert(error.response.data);
       })
   }
 

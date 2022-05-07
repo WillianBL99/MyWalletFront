@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BoxTransactions from '../Layout/BoxTransactions';
 
@@ -5,6 +8,20 @@ import Container from "../Layout/Container";
 import SquareButton from '../Layout/SquareButton';
 
 function Trasactions() {
+	const [transactions, setTransactions] = useState()
+	const {token} = useLocation().state;
+
+	useEffect(() => {
+		const promise = axios.get('http://localhost:5000/get-transactions',
+		{headers: {Authorization: `Bearer ${token}`}})
+
+		promise.then(res => {
+			console.log(res);
+			setTransactions(res.data)
+		});
+		promise.catch(e => console.log(e))
+
+	}, []);
 
   return (
     <ContainerExtended>
@@ -12,7 +29,7 @@ function Trasactions() {
             <h1>Olá, Fulano</h1>
             <ion-icon name="exit-outline"></ion-icon>
         </header>
-        <BoxTransactions />
+        <BoxTransactions transactions={transactions} />
         <section>
             <SquareButton title='Nova entrada' ion_icon='add-circle-outline' />
             <Space />

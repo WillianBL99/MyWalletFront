@@ -1,4 +1,6 @@
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import Container from "../Layout/Container";
@@ -6,14 +8,34 @@ import RetangularButton from "../Layout/RetangularButton";
 import Input from "../Layout/Input";
 
 function Login() {
+  const [loginData, setLoginData] = useState({email:'', password: ''});
+  const {state} = useLocation();
+  const navigate = useNavigate();
+  
+  function handleLogin(event) {
+    event.preventDefault();
+
+    const promise = axios.post('http://localhost:5000/sign-in',loginData);
+    promise.then((res) => {
+      const {token} = res.data;
+      navigate('/transactions', {state: {token}});
+    });
+    promise.catch(error => {
+      console.log(error);
+      alert(error.response.data)
+    })
+
+  }
 
   return (
     <ContainerExtended>
         <Logo>MyWallet</Logo>
-        <Form >
-          <Input type="email" placeholder='E-mail' 
+        <Form onSubmit={handleLogin}>
+          <Input type="email" placeholder='E-mail'
+            onChange={e => {setLoginData({...loginData, email: e.target.value})}} 
           />
           <Input type='password' placeholder="Senha" 
+            onChange={e => {setLoginData({...loginData, password: e.target.value})}} 
           />
           <RetangularButton type='submit' title={'Entrar'} />
         </Form>
