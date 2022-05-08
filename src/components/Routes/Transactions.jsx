@@ -10,8 +10,7 @@ import UserContext from '../../hooks/UserContext';
 
 function Trasactions() {
 	const [transactions, setTransactions] = useState()
-	const {user} = useContext(UserContext);
-	const {url} = useContext(UserContext);
+	const {user, url} = useContext(UserContext).context;
 
 	useEffect(() => {
 		const promise = axios.get(`${url}/get-transactions`, user.config)
@@ -21,7 +20,7 @@ function Trasactions() {
 		});
 		promise.catch(e => console.log(e))
 
-	}, []);
+	}, [url, user]);
 
   return (
     <ContainerExtended>

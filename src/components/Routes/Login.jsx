@@ -7,16 +7,17 @@ import Container from "../Layout/Container";
 import RetangularButton from "../Layout/RetangularButton";
 import Input from "../Layout/Input";
 import UserContext from '../../hooks/UserContext';
+import persistUser from '../../utils/persistUser';
 
 function Login() {
   const [loginData, setLoginData] = useState({email:'', password: ''});
-	const {persistUser} = useContext(UserContext);
+	const {setUser, url} = useContext(UserContext).context;
   const {state} = useLocation();
   const navigate = useNavigate();
   
   function handleLogin(event) {
     event.preventDefault();
-    const promise = axios.post('http://localhost:5000/sign-in',loginData);
+    const promise = axios.post(`${url}/sign-in`,loginData);
 
     promise.then((res) => {
       storeLogin(res.data);
@@ -37,7 +38,7 @@ function Login() {
     }
 
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
-    persistUser(userInfo)
+    setUser(persistUser)
   }
 
   useEffect(() => {
