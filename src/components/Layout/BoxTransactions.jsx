@@ -14,19 +14,23 @@ function BoxTransactions({transactions}) {
 
 	function showBalance(){
 		let total = 0;
+
 		transactions?.forEach(trasaction => {
-			total += trasaction.price
-		})
+			const {price, operation} = trasaction
+			if(operation === 'entry') total += price;
+			else total -= price;
+		});
+
 		return (
 			<section>
-					<strong>SALDO</strong>
-					<strong>{total.toFixed(2)}</strong>
+				<strong>SALDO</strong>
+				<strong>{total.toFixed(2)}</strong>
 			</section>
 		)
 	}
 
   return (
-    <Container>
+		<Container>
 			{showTransactions()}
 			{showBalance()}
 		</Container>
@@ -38,14 +42,15 @@ export default BoxTransactions;
 
 
 function AssembleTrasaction({transactio}) {
-	const {date, description, price} = transactio;
+	const {date, description, price, operation} = transactio;
+	const className = operation === 'entry'?'green':'red';
 	return (
 		<li>
 				<span>
 						<small>{date}</small>
 						<strong>{description}</strong>
 				</span>
-				<strong>{price.toFixed(2)}</strong>
+				<strong className={className}>{price.toFixed(2)}</strong>
 		</li>
 	)
 }
@@ -65,30 +70,34 @@ const Container = styled.article`
 	background-color: var(--color-white);
 
 	li {
-			display: flex;
-			justify-content: space-between;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	li span small {
-			color: var(--color-text-gray);
-			margin-right: 8px;
+		color: var(--color-text-gray);
+		margin-right: 8px;
 	}    
 
-	li>strong {
-			color: red; 
+	strong.red {
+		color: red; 
+	}   
+
+	strong.green {
+		color: green; 
 	}
 
 	section {
-			display: flex;
-			justify-content: space-between;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	section strong {
-			font-weight: 700;
+		font-weight: 700;
 	}
 
 	section strong:last-child {
-			color: green;
+		color: green;
 	}
 `
 
