@@ -10,10 +10,11 @@ import UserContext from '../../hooks/UserContext';
 function Trasactions() {
 	const [transactions, setTransactions] = useState()
 	const {user} = useContext(UserContext);
-	const token = undefined;
+	const {url} = useContext(UserContext);
 
 	useEffect(() => {
-		const promise = axios.get('http://localhost:5000/get-transactions', user.config)
+		console.log(`${url}/get-transactions`, user.config)
+		const promise = axios.get(`${url}/get-transactions`, user.config)
 
 		promise.then(res => {
 			console.log(res);

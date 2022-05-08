@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 function App() {
 	const [user, setUser] = useState(persistUser);
+	const url = 'http://localhost:5000';
 
 	function persistUser() {
 		const userInfo = localStorage.getItem('userInfo');
@@ -21,7 +22,7 @@ function App() {
 	}
 
 	return (
-		<UserContext.Provider value={{ user, setUser, persistUser}}>
+		<UserContext.Provider value={{ user, setUser, persistUser, url}}>
 			<BrowserRouter>
 					<Routes>
 							<Route path='/' element={<Login />} />
