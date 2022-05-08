@@ -16,7 +16,6 @@ function App() {
 
 	function persistUser() {
 		const userInfo = localStorage.getItem('userInfo');
-		console.log('app', userInfo)
 		if (userInfo) return JSON.parse(userInfo);
 		return {};
 	}

@@ -14,11 +14,9 @@ function Trasactions() {
 	const {url} = useContext(UserContext);
 
 	useEffect(() => {
-		console.log(`${url}/get-transactions`, user.config)
 		const promise = axios.get(`${url}/get-transactions`, user.config)
 
 		promise.then(res => {
-			console.log(res);
 			setTransactions(res.data)
 		});
 		promise.catch(e => console.log(e))
@@ -28,7 +26,7 @@ function Trasactions() {
   return (
     <ContainerExtended>
         <header>
-            <h1>Olá, Fulano</h1>
+            <h1>Olá, {user.name}</h1>
 						<Button to={'/'} ion_icon='exit-outline' />
         </header>
         <BoxTransactions transactions={transactions} />
