@@ -2,17 +2,17 @@
 import styled from 'styled-components';
 
 function BoxTransactions({transactions}) {
-	function showTransactions(){
+	const showTransactions = () => {
 		return (
 			<ul>
-				{transactions?.map( (transactio, id) => {
-					return <AssembleTrasaction key={id} transactio={transactio} />
-				})}
+				{transactions?.map( (transactio, id) => 
+					<AssembleTrasaction key={id} transactio={transactio} />
+				)}
 			</ul>
 		)
 	}
 
-	function showBalance(){
+	const showBalance = () => {
 		let total = 0;
 
 		transactions?.forEach(trasaction => {
@@ -46,11 +46,13 @@ function AssembleTrasaction({transactio}) {
 	const className = operation === 'entry'?'green':'red';
 	return (
 		<li>
-				<span>
-						<small>{date}</small>
-						<strong>{description}</strong>
-				</span>
-				<strong className={className}>{price.toFixed(2)}</strong>
+			<span>
+				<small>{date}</small>
+				<strong>{description}</strong>
+			</span>
+			<strong className={className}>
+				{price.toFixed(2)}
+			</strong>
 		</li>
 	)
 }
@@ -64,7 +66,6 @@ const Container = styled.article`
 	height: 60%;
 
 	margin-bottom: 0.8rem;
-
 	padding: 10px;
 
 	background-color: var(--color-white);
@@ -72,6 +73,7 @@ const Container = styled.article`
 	li {
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: 0.25rem;
 	}
 
 	li span small {

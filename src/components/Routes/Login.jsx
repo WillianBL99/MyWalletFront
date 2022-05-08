@@ -1,13 +1,13 @@
-import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-
-import Container from "../Layout/Container";
-import RetangularButton from "../Layout/RetangularButton";
-import Input from "../Layout/Input";
 import UserContext from '../../hooks/UserContext';
 import persistUser from '../../utils/persistUser';
+
+import Input from "../Layout/Input";
+import Container from "../Layout/Container";
+import RetangularButton from "../Layout/RetangularButton";
 
 function Login() {
   const [loginData, setLoginData] = useState({email:'', password: ''});
@@ -34,7 +34,9 @@ function Login() {
     const userInfo = {
       name,
       email,
-      config: {headers: {Authorization: `Bearer ${token}`}}
+      config: {headers: {
+        Authorization: `Bearer ${token}`
+      }}
     }
 
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
@@ -51,11 +53,22 @@ function Login() {
     <ContainerExtended>
         <Logo>MyWallet</Logo>
         <Form onSubmit={handleLogin}>
-          <Input type="email" placeholder='E-mail' value={loginData.email}
-            onChange={e => {setLoginData({...loginData, email: e.target.value})}} 
+          <Input 
+            type="email" 
+            placeholder='E-mail' 
+            value={loginData.email}
+            onChange={e => {setLoginData({
+              ...loginData, 
+              email: e.target.value
+            })}} 
           />
-          <Input type='password' placeholder="Senha" value={loginData.password}
-            onChange={e => {setLoginData({...loginData, password: e.target.value})}} 
+          <Input 
+            type='password' 
+            placeholder="Senha" 
+            value={loginData.password}
+            onChange={e => {setLoginData({
+              ...loginData, password: e.target.value
+            })}} 
           />
           <RetangularButton type='submit' title={'Entrar'} />
         </Form>
