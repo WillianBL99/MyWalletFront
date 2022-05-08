@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import BoxTransactions from '../Layout/BoxTransactions';
 
@@ -28,7 +29,7 @@ function Trasactions() {
     <ContainerExtended>
         <header>
             <h1>Olá, Fulano</h1>
-            <ion-icon name="exit-outline"></ion-icon>
+						<Button to={'/'} ion_icon='exit-outline' />
         </header>
         <BoxTransactions transactions={transactions} />
         <section>
@@ -70,3 +71,19 @@ const Space = styled.div`
     width: 1.6rem;
 `
 
+function Button({ion_icon, to}){
+	const navigate = useNavigate()
+
+	function logout(){
+		if(!window.confirm('Deseja sair?')) return;
+		localStorage.clear();
+		navigate(to?to:'');
+	}
+
+	return (
+		<ion-icon
+			onClick={logout}
+			name={ion_icon}
+		></ion-icon>
+	)
+}

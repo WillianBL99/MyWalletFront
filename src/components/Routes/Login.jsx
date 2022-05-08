@@ -16,7 +16,6 @@ function Login() {
   
   function handleLogin(event) {
     event.preventDefault();
-    console.log('loginData', loginData)
     const promise = axios.post('http://localhost:5000/sign-in',loginData);
 
     promise.then((res) => {
@@ -25,8 +24,7 @@ function Login() {
     });
 
     promise.catch(error => {
-      console.log(error)
-      alert(error.response)
+      alert(error.response.data)
     });
   }
 
