@@ -1,11 +1,11 @@
-import axios from 'axios';
+import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios';
 import styled from 'styled-components';
 
+import Input from "../Layout/Input";
 import Container from "../Layout/Container";
 import RetangularButton from "../Layout/RetangularButton";
-import Input from "../Layout/Input";
-import { useState } from 'react';
 
 function Login() {
   const [registerData, setRegisterData] = useState({name:'', email: '', password: ''});
@@ -35,7 +35,6 @@ function Login() {
       })
   }
 
-
   return (
     <ContainerExtended>
         <Logo>MyWallet</Logo>
@@ -58,7 +57,6 @@ function Login() {
           Já tem uma conta? Entre agora!
         </Link>
     </ContainerExtended>
-
   );
 }
 

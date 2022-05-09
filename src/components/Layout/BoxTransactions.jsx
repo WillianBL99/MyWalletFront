@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 
 function BoxTransactions({transactions}) {
@@ -38,8 +37,6 @@ function BoxTransactions({transactions}) {
 }
 
 export default BoxTransactions;
-
-
 
 function AssembleTrasaction({transactio}) {
 	const {date, description, price, operation} = transactio;
