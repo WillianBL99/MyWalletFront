@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import UserContext from '../../hooks/UserContext';
 
 import Input from "../Layout/Input";
 import Container from "../Layout/Container";
@@ -11,6 +12,7 @@ function Login() {
   const [registerData, setRegisterData] = useState({name:'', email: '', password: ''});
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const navigate = useNavigate();
+  const {url} = useContext(UserContext).context;
 
   function register(event) {
     event.preventDefault();
@@ -20,9 +22,7 @@ function Login() {
       return
     }
 
-    const url = 'http://localhost:5000/sign-up';
-
-    const promise = axios.post(url, registerData)
+    const promise = axios.post(`${url}/sign-up`, registerData)
 
     promise.then(() => {
         const {email, password} = registerData;
